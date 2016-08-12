@@ -25,10 +25,12 @@ php_usage() {
 	EOF
 }
 
-if [[ $# == 0 ]]; then
-	exec php-fpm
-elif [[ $# == 1 && $1 == "help" || $1 == "usage" ]]; then
-	php_usage
-else
-	exec $@
+if [[ -z ${PHP_DO_NOT_EXECUTE} ]]; then
+	if [[ $# == 0 ]]; then
+		exec php-fpm
+	elif [[ $# == 1 && $1 == "help" || $1 == "usage" ]]; then
+		php_usage
+	else
+		exec $@
+	fi
 fi

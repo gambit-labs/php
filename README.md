@@ -7,7 +7,6 @@ This is a vanilla `php:fpm-alpine` docker image with some extensions.
 These extra modules are installed:
  - mysqli
  - gd
- - tidy
  - curl
 
 Includes the production `php.ini` settings from https://github.com/php/php-src, and some environment variables that may be used for customization

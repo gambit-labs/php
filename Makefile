@@ -1,5 +1,5 @@
 IMAGE_REPO=gambitlabs/php
-IMAGE_VERSION=v0.4.0
+IMAGE_VERSION=v0.5.0
 
 build: build-php5 build-php7
 build-php5:

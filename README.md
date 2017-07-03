@@ -20,6 +20,28 @@ Supported PHP variables and their defaults:
 PHP version: 7.0.9
 ```
 
+#### cloud-init
+
+```
+#cloud-config
+package_update: true
+packages:
+  - git
+  - curl
+  - make
+  - wget
+  - nano
+  - software-properties-common
+  - apt-transport-https
+runcmd:
+  - apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+  - apt-add-repository -y 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+  - apt-get update -y
+  - apt-get install -y docker-engine
+  - git clone https://github.com/gambit-labs/php.git /root/php
+# after login you'll find the cloud-init logs in /var/log/cloud-init-output.log
+```
+
 #### License
 
 MIT

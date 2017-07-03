@@ -1,7 +1,7 @@
 FROM php:5.6-fpm-alpine
 
 # Configure and install required PHP modules
-RUN apk --update add bash libpng-dev libjpeg-turbo-dev libvpx-dev \
+RUN apk --update add bash libpng-dev libjpeg-turbo-dev libvpx-dev curl-dev libmcrypt-dev\
 	&& docker-php-ext-configure gd \
 		--with-gd \
 		--with-jpeg-dir=/usr/include/ \
@@ -9,7 +9,8 @@ RUN apk --update add bash libpng-dev libjpeg-turbo-dev libvpx-dev \
 		mysql \
 		mysqli \
 		gd \
-		curl
+		curl \
+		mcrypt
 
 ADD https://raw.githubusercontent.com/php/php-src/PHP-5.6/php.ini-production /usr/local/etc/php/php.ini
 COPY php-entrypoint.sh /
